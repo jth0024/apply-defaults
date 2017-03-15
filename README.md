@@ -10,14 +10,15 @@ npm install apply-defaults
 
 ## Usage
 
-The default export is a curried function that takes two arguments: `defaults: Object` and an optional `customizer: Function`, and returns a merging function. The merging function takes a single argument: `target: Object`, and it returns a new object with merged keys. For most use cases, you can provide a `defaults` argument and ignore the customizer.
+The default export is a curried function that accepts two arguments, `defaults` and an optional `customizer`, and returns a merging function. The merging function accepts one argument, `target`, and it returns a new object with merged keys.
 
 ```javascript
 import applyDefaults from 'apply-defaults';
 
 function printPerson(person) {
-  const personDefaults = applyDefaults({ name: '', age: 0 });
-  console.log(personDefaults(person));
+  const defaultProps = { name: '', age: 0 };
+  const withDefaults = applyDefaults(defaultProps);
+  console.log(withDefaults(person));
 }
 
 const person = { name: 'Greg' };
@@ -25,27 +26,22 @@ printPerson(person);
 // { name: 'Greg', age: 0 }
 ```
 
-For special cases, you can provide the optional customizer function to implement more advanced merging functionality. The customizer function is invoked with three arguments: `target: Object`, `defaults: object`, and `key: string`, and it should return the new value for the given key. A common example would be to allow keys with undefined or null values.
+For advanced use-cases, you can provide a customizer function to implement your own merging functionality. The function should accept three arguments: `target`, `defaults`, and `key`, and it should return a value to be assigned for the given key. For example, you might implement a customizer that allows keys to contain null values.
 
 ```javascript
 import applyDefaults from 'apply-defaults';
-import { has } from 'lodash';
+import { get, has } from 'lodash';
 
-function customizer(target, defaults, key) {
-  return has(target, key)
-    ? target[key]
-    : defaults[key];
-}
+const customizer = (target, defaults, key) =>
+  (has(target, key) ? target[key] : defaults[key]);
 
 function printPerson(person) {
-  const personDefaults = applyDefaults(
-    { name: '', occupation: '' },
-    customizer
-  );
-  console.log(personDefaults(person));
+  const defaultProps = { name: '', age: 0 };
+  const withDefaults = applyDefaults(defaultProps, customizer);
+  console.log(withDefaults(person));
 }
 
-const person = { name: 'Greg', occupation: undefined };
+const person = { name: 'Greg', age: undefined };
 printPerson(person);
-// { name: 'Greg', occupation: undefined }
+// { name: 'Greg', age: null }
 ```
