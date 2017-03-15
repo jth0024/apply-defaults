@@ -15,6 +15,10 @@
   "keywords": ["defaults", "apply", "config", "args"],
   "author": "Jordan Hurt",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jth0024/apply-defaults.git"
+  },
   "devDependencies": {
     "ava": "0.18.2",
     "babel-cli": "6.24.0",
