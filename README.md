@@ -1,5 +1,5 @@
 # apply-defaults
-Ever needed a more flexible Object.assign? This helper allows you to selectively merge keys.
+Ever needed a more flexible Object.assign? This helper allows you to apply default keys to an object based on custom logic.
 
 ## Installation
 
