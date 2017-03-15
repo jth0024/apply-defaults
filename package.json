@@ -1,10 +1,10 @@
 {
   "name": "apply-defaults",
-  "version": "1.0.0",
-  "description": "A utility function to ",
+  "version": "1.0.1",
+  "description": "Easily apply default properties to an object",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rimraf node_modules",
+    "prebuild": "rimraf dist",
     "build": "babel src --out-dir dist",
     "lint": "eslint src",
     "prepublish": "npm run test && npm run lint && npm run build",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "ava": "0.18.2",
-    "babel-core": "6.24.0",
+    "babel-cli": "6.24.0",
     "babel-eslint": "7.1.1",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-latest": "6.24.0",
