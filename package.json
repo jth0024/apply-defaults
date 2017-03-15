@@ -1,0 +1,41 @@
+{
+  "name": "apply-defaults",
+  "version": "1.0.0",
+  "description": "A utility function to ",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "rimraf node_modules",
+    "build": "babel src --out-dir dist",
+    "lint": "eslint src",
+    "prepublish": "npm run test && npm run lint && npm run build",
+    "publish": "npm publish",
+    "test": "ava",
+    "test:watch": "ava --watch"
+  },
+  "keywords": [],
+  "author": "Jordan Hurt",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "0.18.2",
+    "babel-core": "6.24.0",
+    "babel-eslint": "7.1.1",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "babel-preset-latest": "6.24.0",
+    "babel-preset-stage-2": "6.22.0",
+    "babel-register": "6.24.0",
+    "eslint": "3.17.1",
+    "eslint-config-airbnb-base": "11.1.1",
+    "eslint-plugin-import": "2.2.0",
+    "rimraf": "2.6.1",
+    "sinon": "1.17.7"
+  },
+  "dependencies": {
+    "lodash": "4.17.4"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  }
+}
