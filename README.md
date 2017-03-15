@@ -41,7 +41,7 @@ function printPerson(person) {
   console.log(withDefaults(person));
 }
 
-const person = { name: 'Greg', age: undefined };
+const person = { name: 'Greg', age: null };
 printPerson(person);
 // { name: 'Greg', age: null }
 ```
