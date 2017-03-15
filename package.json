@@ -12,7 +12,7 @@
     "test": "ava",
     "test:watch": "ava --watch"
   },
-  "keywords": [],
+  "keywords": ["defaults", "apply", "config", "args"],
   "author": "Jordan Hurt",
   "license": "ISC",
   "devDependencies": {

@@ -1,5 +1,5 @@
 # apply-defaults
-Ever needed a more flexible Object.assign? This helper allows you to apply default keys to an object based on custom logic.
+A simple utility to apply default values to any object.
 
 ## Installation
 
@@ -15,12 +15,14 @@ The default export is a curried function that takes two arguments: `defaults: Ob
 ```javascript
 import applyDefaults from 'apply-defaults';
 
-const defaults = { foo: 'bar' };
-const target = { name: 'Greg' };
-const result = applyDefaults(defaults)(target);
+function printPerson(person) {
+  const personDefaults = applyDefaults({ name: '', age: 0 });
+  console.log(personDefaults(person));
+}
 
-console.log(result);
-// { foo: 'bar', name: 'Greg' }
+const person = { name: 'Greg' };
+printPerson(person);
+// { name: 'Greg', age: 0 }
 ```
 
 For special cases, you can provide the optional customizer function to implement more advanced merging functionality. The customizer function is invoked with three arguments: `target: Object`, `defaults: object`, and `key: string`, and it should return the new value for the given key. A common example would be to allow keys with undefined or null values.
@@ -29,16 +31,21 @@ For special cases, you can provide the optional customizer function to implement
 import applyDefaults from 'apply-defaults';
 import { has } from 'lodash';
 
-const defaults = { foo: 'bar' };
-const target = { foo: null };
-const result = applyDefaults(defaults, customizer)(target);
-
-console.log(result);
-// { foo: null }
-
 function customizer(target, defaults, key) {
   return has(target, key)
     ? target[key]
     : defaults[key];
 }
+
+function printPerson(person) {
+  const personDefaults = applyDefaults(
+    { name: '', occupation: '' },
+    customizer
+  );
+  console.log(personDefaults(person));
+}
+
+const person = { name: 'Greg', occupation: undefined };
+printPerson(person);
+// { name: 'Greg', occupation: undefined }
 ```
