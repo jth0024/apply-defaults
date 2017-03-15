@@ -7,8 +7,8 @@
     "prebuild": "rimraf dist",
     "build": "babel src --out-dir dist",
     "lint": "eslint src",
-    "prepublish": "npm run test && npm run lint && npm run build",
-    "publish": "npm publish",
+    "prerelease": "npm run test && npm run lint && npm run build",
+    "release": "npm publish",
     "test": "ava",
     "test:watch": "ava --watch"
   },
