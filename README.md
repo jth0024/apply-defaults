@@ -10,7 +10,7 @@ npm install apply-defaults
 
 ## Usage
 
-The default export is a curried function that accepts two arguments, `defaults` and an optional `customizer`, and returns a merging function. The merging function accepts one argument, `target`, and it returns a new object with merged keys.
+The default export is a function that accepts two arguments, `defaults` and an optional `customizer`, and returns a merging function. The merging function accepts one argument, `target`, and it returns a new object with merged keys.
 
 ```javascript
 import applyDefaults from 'apply-defaults';
