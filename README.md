@@ -30,7 +30,7 @@ For advanced use-cases, you can provide a customizer function to implement your 
 
 ```javascript
 import applyDefaults from 'apply-defaults';
-import { get, has } from 'lodash';
+import { has } from 'lodash';
 
 const customizer = (target, defaults, key) =>
   (has(target, key) ? target[key] : defaults[key]);
