@@ -1,6 +1,6 @@
 {
   "name": "apply-defaults",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple utility to apply default values to any object.",
   "main": "dist/index.js",
   "scripts": {
